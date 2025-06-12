@@ -2,6 +2,7 @@ package com.gitflow.gitflowpc1.controller;
 
 import com.gitflow.gitflowpc1.entity.Producto;
 import com.gitflow.gitflowpc1.service.ProductoService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +30,7 @@ public class ProductoController {
 
     @PostMapping
     public ResponseEntity<Producto> createProduct(@RequestBody Producto producto){
-        return ResponseEntity.ok(productoService.createProduct(producto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(productoService.createProduct(producto));
     }
 
     @PutMapping("/{id}")
